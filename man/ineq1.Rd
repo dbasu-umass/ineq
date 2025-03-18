@@ -17,13 +17,13 @@ A list with four elements:
 \item{CV}{Coefficient of variation (scalar)}
 \item{Gini}{Gini coefficient (scalar)}
 \item{lzdata}{A data frame with cumulative population and income shares}
-\item{lzcurve}{A plot of the Lorenz curve (created with ggplots)}
+\item{lzcurve}{A plot of the Lorenz curve (created with ggplot2)}
 }
 \description{
 Inequality for groupwise popn share and income levels
 }
 \examples{
-y2011u <- c(700.50,908.92,1118.09,1362.69,1624.86,1887.65,2180.52,2547.94,3062.85,3892.60,5350.06,10281.84)
+y2011u <- c(700,909,1118,1363,1625,1888,2181,2548,3063,3893,5351,10282)
 w2011u <- c(0.05,0.05,rep(0.1,8),0.05,0.05)
 res_urb_11 <- ineq1(y=y2011u, w=w2011u)
 
