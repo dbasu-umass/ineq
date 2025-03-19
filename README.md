@@ -96,6 +96,18 @@ In a similar way, using $y_j=(s_j/w_j)\mu$, we see that the Gini
 coefficient is given by
 $$G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1}{2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} w_j w_k |(s_j/w_j)-(s_k/w_k)|$$
 
+## The functions in the package
+
+There are two functions available right now: `ineq1` and `ineq2`.
+
+- `ineq1`: This function creates the Lorenz curve, and computes the
+  coefficient of variation (CV) and the Gini coefficient for group-wise
+  data on population shares and mean income levels;
+
+- `ineq2`: This function creates the Lorenz curve, and computes the
+  coefficient of variation (CV) and the Gini coefficient for group-wise
+  data on population and income shares;
+
 ## Installation
 
 You can install the development version of ineq from
@@ -148,18 +160,19 @@ myresults$Gini
 # cumulative population and income share
 myresults$lzdata
 #>    cum_popsh  cum_incsh
-#> 1       0.05 0.02832061
-#> 2       0.10 0.06448393
-#> 3       0.20 0.10702351
-#> 4       0.30 0.15615280
-#> 5       0.40 0.21143187
-#> 6       0.50 0.27312904
-#> 7       0.60 0.34189277
-#> 8       0.70 0.41938341
-#> 9       0.80 0.50874673
-#> 10      0.90 0.61777653
-#> 11      0.95 0.75661673
-#> 12      1.00 1.00000000
+#> 1       0.00 0.00000000
+#> 2       0.05 0.02832061
+#> 3       0.10 0.06448393
+#> 4       0.20 0.10702351
+#> 5       0.30 0.15615280
+#> 6       0.40 0.21143187
+#> 7       0.50 0.27312904
+#> 8       0.60 0.34189277
+#> 9       0.70 0.41938341
+#> 10      0.80 0.50874673
+#> 11      0.90 0.61777653
+#> 12      0.95 0.75661673
+#> 13      1.00 1.00000000
 ```
 
 The Lorenz curve.
