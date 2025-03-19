@@ -23,64 +23,73 @@ ineq1 <- function(y,w){
   # y: vector of income levels
   # w: vector of population shares
 
-  # ----- coefficient of variation
-  # mean
-  mu_y <- base::sum(y*w)
+  if(base::length(y)!=base::length(w)){
+    stop("Length of y an w cannot differ")
+  } else{
 
-  # sd
-  sd_y <- base::sqrt(sum(w*(y-mu_y)^2))
+    # ----- coefficient of variation
+    # mean
+    mu_y <- base::sum(y*w)
 
-  # cv
-  cv <- sd_y/mu_y
+    # sd
+    sd_y <- base::sqrt(sum(w*(y-mu_y)^2))
 
-  # ------- Gini coefficient
-  # Length of income vector
-  m <- base::length(y)
+    # cv
+    cv <- sd_y/mu_y
 
-  # summing up absolute income differences
-  G1 <- 0
-  for(j in 1:m){
-    for(k in 1:m){
-      G1 <- G1 + w[j]*w[k]*abs(y[j]-y[k])
+    # ------- Gini coefficient
+    # Length of income vector
+    m <- base::length(y)
+
+    # summing up absolute income differences
+    G1 <- 0
+    for(j in 1:m){
+      for(k in 1:m){
+        G1 <- G1 + w[j]*w[k]*abs(y[j]-y[k])
+      }
     }
+    # Computing Gini
+    G <- G1/(2*mu_y)
+
+
+    # ------ Lorenz curve
+
+    # cumulative population
+    cum_popsh <- base::cumsum(w)
+
+    # cumulative income share
+    s <- y/sum(y)
+    cum_incsh <- base::cumsum(s)
+
+    # Data frame
+    df <- base::data.frame(cum_popsh,cum_incsh)
+
+    # Create plot
+    p1 <- ggplot2::ggplot(data = df, ggplot2::aes(x=cum_popsh,y=cum_incsh))+
+      ggplot2::geom_line(color="blue") +
+      ggplot2::geom_point() +
+      ggplot2::geom_abline(slope = 1, intercept = 0) +
+      ggplot2::labs(
+        title="Lorenz Curve",
+        x="cumulative population share",
+        y = "cumulaitve income share"
+      ) +
+      ggplot2::theme_minimal()
+
+
+    # Results
+    res_ineq <- base::list(
+      CV = cv,
+      Gini = G,
+      lzcurve = p1,
+      lzdata = df
+    )
+
+    # Output
+    return(res_ineq)
+
   }
-  # Computing Gini
-  G <- G1/(2*mu_y)
 
 
-  # ------ Lorenz curve
 
-  # cumulative population
-  cum_popsh <- base::cumsum(w)
-
-  # cumulative income share
-  s <- y/sum(y)
-  cum_incsh <- base::cumsum(s)
-
-  # Data frame
-  df <- base::data.frame(cum_popsh,cum_incsh)
-
-  # Create plot
-  p1 <- ggplot2::ggplot(data = df, ggplot2::aes(x=cum_popsh,y=cum_incsh))+
-    ggplot2::geom_line() +
-    ggplot2::geom_point() +
-    ggplot2::geom_abline(slope = 1, intercept = 0) +
-    ggplot2::labs(
-      title="Lorenz Curve",
-      x="cumulative popn share",
-      y = "cumulaitve income share"
-    ) +
-    ggplot2::theme_minimal()
-
-
-  # Results
-  res_ineq <- base::list(
-    CV = cv,
-    Gini = G,
-    lzcurve = p1,
-    lzdata = df
-  )
-
-  # Output
-  return(res_ineq)
 }
