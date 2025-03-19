@@ -55,11 +55,11 @@ ineq1 <- function(y,w){
     # ------ Lorenz curve
 
     # cumulative population
-    cum_popsh <- base::cumsum(w)
+    cum_popsh <- c(0,base::cumsum(w))
 
     # cumulative income share
     s <- y/sum(y)
-    cum_incsh <- base::cumsum(s)
+    cum_incsh <- c(0,base::cumsum(s))
 
     # Data frame
     df <- base::data.frame(cum_popsh,cum_incsh)
@@ -69,6 +69,8 @@ ineq1 <- function(y,w){
       ggplot2::geom_line(color="blue") +
       ggplot2::geom_point() +
       ggplot2::geom_abline(slope = 1, intercept = 0) +
+      ggplot2::geom_hline(yintercept = 0) +
+      ggplot2::geom_vline(xintercept = 1) +
       ggplot2::labs(
         title="Lorenz Curve",
         x="cumulative population share",

@@ -1,3 +1,22 @@
+#' Inequality for groupwise popn and income shares
+#'
+#' @param w A vector of groupwise population shares
+#' @param s A vector of groupwise income shares
+#'
+#' @returns A list with four elements:
+#'
+#'\item{CV}{Coefficient of variation (scalar)}
+#'\item{Gini}{Gini coefficient (scalar)}
+#'\item{lzdata}{A data frame with cumulative population and income shares}
+#'\item{lzcurve}{A plot of the Lorenz curve (created with ggplot2)}
+#'
+#' @export
+#'
+#' @examples
+#'s <- c(0.09, 0.15, 0.20, 0.25, 0.31)
+#'w <- rep(x=0.2, times=5)
+#'myres <- ineq2(w=w,s=s)
+#'
 ineq2 <- function(w,s){
 
   # s: vector of income shares
@@ -8,13 +27,13 @@ ineq2 <- function(w,s){
   } else{
 
     # Will use for loops
-    m <- length(s)
+    m <- base::length(s)
 
     # ratio of w and s
     y <- (w/s)
 
     # coefficient of variation
-    cv <- sqrt(w*(y-1)^2)
+    cv <- base::sqrt(w*(y-1)^2)
 
     # --- Gini coefficient
     # summing up absolute income differences
@@ -31,25 +50,27 @@ ineq2 <- function(w,s){
     # ------ Lorenz curve
 
     # cumulative population
-    cum_popsh <- cumsum(w)
+    cum_popsh <- c(0,base::cumsum(w))
 
     # cumulative income share
-    cum_incsh <- cumsum(s)
+    cum_incsh <- c(0,base::cumsum(s))
 
     # Data frame
-    df <- data.frame(cum_popsh,cum_incsh)
+    df <- base::data.frame(cum_popsh,cum_incsh)
 
     # Create plot
-    p1 <- ggplot(data = df, aes(x=cum_popsh,y=cum_incsh))+
-      geom_line(color="blue") +
-      geom_point() +
-      geom_abline(slope = 1, intercept = 0) +
-      labs(
+    p1 <- ggplot2::ggplot(data = df, ggplot2::aes(x=cum_popsh,y=cum_incsh))+
+      ggplot2::geom_line(color="blue") +
+      ggplot2::geom_point() +
+      ggplot2::geom_abline(slope = 1, intercept = 0) +
+      ggplot2::geom_hline(yintercept = 0) +
+      ggplot2::geom_vline(xintercept = 1) +
+      ggplot2::labs(
         title="Lorenz Curve",
         x="cumulative population share",
         y = "cumulaitve income share"
       ) +
-      theme_minimal()
+      ggplot2::theme_minimal()
 
 
     # Results
