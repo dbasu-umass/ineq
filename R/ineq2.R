@@ -3,10 +3,11 @@
 #' @param w A vector of groupwise population shares
 #' @param s A vector of groupwise income shares
 #'
-#' @returns A list with four elements:
+#' @returns A list with the following elements:
 #'
 #'\item{CV}{Coefficient of variation (scalar)}
 #'\item{Gini}{Gini coefficient (scalar)}
+#'\item{TH1}{Theil's first measure (scalar)}
 #'\item{lzdata}{A data frame with cumulative population and income shares}
 #'\item{lzcurve}{A plot of the Lorenz curve (created with ggplot2)}
 #'
@@ -26,16 +27,16 @@ ineq2 <- function(w,s){
     stop("Length of s an w cannot differ")
   } else{
 
-    # Will use for loops
+    # --- Number of observations: Will use for loops
     m <- base::length(s)
 
-    # ratio of w and s
-    y <- (w/s)
+    # --- Ratio of w and s: Used in all calculations
+    y <- (s/w)
 
-    # coefficient of variation
-    cv <- base::sqrt(w*(y-1)^2)
+    # ---- Coefficient of variation
+    cv <- base::sqrt(sum(w*(y-1)^2))
 
-    # --- Gini coefficient
+    # ---- Gini coefficient
     # summing up absolute income differences
     G1 <- 0
     for(j in 1:m){
@@ -45,6 +46,10 @@ ineq2 <- function(w,s){
     }
     # Computing Gini
     G <- G1/2
+
+
+    # ---- Theil's first measure
+    Th1 <- sum(s*log(y))
 
 
     # ------ Lorenz curve
@@ -61,10 +66,15 @@ ineq2 <- function(w,s){
     # Create plot
     p1 <- ggplot2::ggplot(data = df, ggplot2::aes(x=cum_popsh,y=cum_incsh))+
       ggplot2::geom_line(color="blue") +
-      ggplot2::geom_point() +
+      #ggplot2::geom_point() +
       ggplot2::geom_abline(slope = 1, intercept = 0) +
       ggplot2::geom_hline(yintercept = 0) +
       ggplot2::geom_vline(xintercept = 1) +
+      ggplot2::annotate(
+        "text", x = 0.4, y = 0.5,
+        label = "Line of perfect equality",
+        angle = 30
+        ) +
       ggplot2::labs(
         title="Lorenz Curve",
         x="cumulative population share",
@@ -77,6 +87,7 @@ ineq2 <- function(w,s){
     res_ineq <- list(
       CV = cv,
       Gini = G,
+      TH1 = Th1,
       lzcurve = p1,
       lzdata = df
     )

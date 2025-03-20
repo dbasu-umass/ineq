@@ -61,6 +61,14 @@ G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1
 \]
 
 
+### Theil's first measure 
+
+The third measure of inequality is Theil's first measure:
+\[
+T = \sum_{j=1}^{m} \frac{n_j}{n}  \frac{y_j}{\mu} \ln \left( \frac{y_j}{\mu} \right).
+\]
+
+
 ### Using data on population and income shares
 
 In many situations, researchers have access *solely* to data on population shares and income shares of each group, i.e. $w_j$ and $s_j$, for $j=1,2, \ldots, m$, but they do not have access to data on mean income levels in each group. For example, a researcher might only know the income shares of each quintile of the income distribution. How do we compute the measures of economic inequality in this case?
@@ -73,14 +81,23 @@ Using this, we see that the variance of the income distribution is given by $$\s
 
 In a similar way, using $y_j=(s_j/w_j)\mu$, we see that the Gini coefficient is given by $$G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1}{2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} w_j w_k |(s_j/w_j)-(s_k/w_k)|$$
 
+In the same way, Theil's first measure can re-written as:
+\[
+T = \sum_{j=1}^{m} \frac{n_j}{n}  \frac{y_j}{\mu} \ln \left( \frac{y_j}{\mu} \right) = \sum_{j=1}^{m} s_j \ln \left( \frac{y_j}{\mu} \right).
+\]
+
 
 ## The functions in the package
 
-There are two functions available right now: `ineq1` and `ineq2`. 
+The following functions are available right now:  
 
 - `ineq1`: This function creates the Lorenz curve, and computes the coefficient of variation (CV) and the Gini coefficient for group-wise data on population shares and mean income levels;
 
 - `ineq2`: This function creates the Lorenz curve, and computes the coefficient of variation (CV) and the Gini coefficient for group-wise data on population and income shares;
+
+- `ineq3`: This function creates the Lorenz curve, and computes the coefficient of variation (CV) and the Gini coefficient for individual-level data on income levels;
+
+- `ineq4`: This function creates the Lorenz curve, and computes the coefficient of variation (CV) and the Gini coefficient for group-wise data on population and mean income levels.
 
 ## Installation
 

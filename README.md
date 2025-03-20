@@ -69,6 +69,12 @@ The third measure of inequality is the Gini coefficient: $$
 G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1}{2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} w_j w_k |y_j-y_k|.
 $$
 
+### Theil’s first measure
+
+The third measure of inequality is Theil’s first measure: $$
+T = \sum_{j=1}^{m} \frac{n_j}{n}  \frac{y_j}{\mu} \ln \left( \frac{y_j}{\mu} \right).
+$$
+
 ### Using data on population and income shares
 
 In many situations, researchers have access *solely* to data on
@@ -96,9 +102,13 @@ In a similar way, using $y_j=(s_j/w_j)\mu$, we see that the Gini
 coefficient is given by
 $$G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1}{2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} w_j w_k |(s_j/w_j)-(s_k/w_k)|$$
 
+In the same way, Theil’s first measure can re-written as: $$
+T = \sum_{j=1}^{m} \frac{n_j}{n}  \frac{y_j}{\mu} \ln \left( \frac{y_j}{\mu} \right) = \sum_{j=1}^{m} s_j \ln \left( \frac{y_j}{\mu} \right).
+$$
+
 ## The functions in the package
 
-There are two functions available right now: `ineq1` and `ineq2`.
+The following functions are available right now:
 
 - `ineq1`: This function creates the Lorenz curve, and computes the
   coefficient of variation (CV) and the Gini coefficient for group-wise
@@ -107,6 +117,14 @@ There are two functions available right now: `ineq1` and `ineq2`.
 - `ineq2`: This function creates the Lorenz curve, and computes the
   coefficient of variation (CV) and the Gini coefficient for group-wise
   data on population and income shares;
+
+- `ineq3`: This function creates the Lorenz curve, and computes the
+  coefficient of variation (CV) and the Gini coefficient for
+  individual-level data on income levels;
+
+- `ineq4`: This function creates the Lorenz curve, and computes the
+  coefficient of variation (CV) and the Gini coefficient for group-wise
+  data on population and mean income levels.
 
 ## Installation
 
@@ -145,14 +163,14 @@ Now, let us look at the results.
 ``` r
 # Coefficient of variation
 myresults$CV
-#> [1] 0.5995949
+#> [1] 1.014573
 ```
 
 ``` r
 
 # Gini coefficient
 myresults$Gini
-#> [1] 0.283041
+#> [1] 0.3763352
 ```
 
 ``` r

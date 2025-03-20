@@ -7,15 +7,16 @@
 ineq1(y, w)
 }
 \arguments{
-\item{y}{A vector of groupwise income levels}
+\item{y}{A vector of groupwise mean income levels}
 
 \item{w}{A vector of groupwise population shares}
 }
 \value{
-A list with four elements:
+A list with the following elements:
 
 \item{CV}{Coefficient of variation (scalar)}
 \item{Gini}{Gini coefficient (scalar)}
+\item{TH1}{Theil's first measure (scalar)}
 \item{lzdata}{A data frame with cumulative population and income shares}
 \item{lzcurve}{A plot of the Lorenz curve (created with ggplot2)}
 }

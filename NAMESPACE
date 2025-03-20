@@ -2,3 +2,5 @@
 
 export(ineq1)
 export(ineq2)
+export(ineq3)
+export(ineq4)
