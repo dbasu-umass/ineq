@@ -37,15 +37,10 @@ ineq2 <- function(w,s){
     cv <- base::sqrt(sum(w*(y-1)^2))
 
     # ---- Gini coefficient
-    # summing up absolute income differences
-    G1 <- 0
-    for(j in 1:m){
-      for(k in 1:m){
-        G1 <- G1 + w[j]*w[k]*abs(y[j]-y[k])
-      }
-    }
-    # Computing Gini
-    G <- G1/2
+    absdiff <- function(a,b){abs(a-b)}
+    M1 <- outer(y,y,FUN = absdiff)
+    M2 <- outer(w,w,"*")
+    G <- sum(M1*M2)/2
 
 
     # ---- Theil's first measure
