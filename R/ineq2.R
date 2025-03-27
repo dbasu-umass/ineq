@@ -1,7 +1,7 @@
 #' Inequality for groupwise popn and income shares
 #'
 #' @param w A vector of groupwise population shares
-#' @param s A vector of groupwise income shares
+#' @param s A corresponding vector of groupwise income shares (in increasing order)
 #'
 #' @returns A list with the following elements:
 #'
@@ -25,6 +25,8 @@ ineq2 <- function(w,s){
 
   if(base::length(s)!=base::length(w)){
     stop("Length of s an w cannot differ")
+  } else if (base::is.unsorted(s)==TRUE) {
+    stop("s needs to be sorted in increasing order")
   } else{
 
     # --- Number of observations: Will use for loops

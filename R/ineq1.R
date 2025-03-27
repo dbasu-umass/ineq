@@ -1,7 +1,7 @@
 #' Inequality for groupwise popn share and income levels
 #'
-#' @param y A vector of groupwise mean income levels
-#' @param w A vector of groupwise population shares
+#' @param y A vector of groupwise mean income levels (in increasing order)
+#' @param w A corresponding vector of groupwise population shares
 #'
 #' @returns A list with the following elements:
 #'
@@ -26,7 +26,9 @@ ineq1 <- function(y,w){
 
   if(base::length(y)!=base::length(w)){
     stop("Length of y an w cannot differ")
-  } else{
+  } else if (is.unsorted(y)==TRUE) {
+    stop("y needs to be sorted in increasing order")
+  } else {
 
     # --- income shares
     s <- y/sum(y)

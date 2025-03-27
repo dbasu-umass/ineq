@@ -1,7 +1,7 @@
 #' Inequality for group-level mean income and population levels
 #'
-#' @param y A vector of group-level mean income levels
-#' @param n A vector of group-level population levels
+#' @param y A vector of group-level mean income levels (in increasing order)
+#' @param n A corresponding vector of group-level population levels
 #'
 #' @returns A list with the following elements:
 #'
@@ -23,26 +23,34 @@ ineq4 <- function(y,n){
   # y: vector of mean income levels
   # n: vector of populations levels
 
-  # --- income shares
-  s <- y/(base::sum(y))
+  if(base::length(y)!=base::length(n)){
+    stop("Length of y and n cannot differ")
+  } else if (is.unsorted(y)==TRUE) {
+    stop("y needs to be sorted in increasing order")
+  } else {
 
-  # --- population shares
-  w <- n/(base::sum(n))
+    # --- income shares
+    s <- y/(base::sum(y))
 
-  # --- Compute all measures by using 'ineq2'
-  myres <- ineq::ineq2(w=w,s=s)
+    # --- population shares
+    w <- n/(base::sum(n))
+
+    # --- Compute all measures by using 'ineq2'
+    myres <- ineq::ineq2(w=w,s=s)
 
 
-  # Results
-  res_ineq <- base::list(
-    CV = myres$CV,
-    Gini = myres$Gini,
-    TH1 = myres$TH1,
-    lzcurve = myres$lzcurve,
-    lzdata = myres$lzdata
-  )
+    # Results
+    res_ineq <- base::list(
+      CV = myres$CV,
+      Gini = myres$Gini,
+      TH1 = myres$TH1,
+      lzcurve = myres$lzcurve,
+      lzdata = myres$lzdata
+    )
 
-  # Output
-  return(res_ineq)
+    # Output
+    return(res_ineq)
+  }
+
 
 }

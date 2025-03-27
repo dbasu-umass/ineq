@@ -20,11 +20,14 @@ ineq3 <- function(y){
 
   # y: vector of individual-level income levels
 
+  # Sort income vector
+  y_new <- sort(y)
+
   # --- income shares
-  s <- y/(base::sum(y))
+  s <- y_new/(base::sum(y_new))
 
   # --- population shares
-  w <- rep(x=(1/(base::length(y))),times=base::length(y))
+  w <- rep(x=(1/(base::length(y_new))),times=base::length(y_new))
 
   # --- Compute all measures by using 'ineq2'
   myres <- ineq::ineq2(w=w,s=s)
