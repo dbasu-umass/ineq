@@ -54,26 +54,23 @@ $45$-degree line.
 
 ### Coefficient of Variation
 
-The mean income level is given by $$
-\mu = \frac{1}{n} \sum_{j=1}^{m} n_j y_j = \sum_{j=1}^{m} w_j y_j 
-$$ and the variance of the income level is given by $$
-\sigma^2 = \frac{1}{n} \sum_{j=1}^{m} n_j \left(y_j-\mu \right)^2 = \sum_{j=1}^{m} w_j \left(y_j-\mu \right)^2.
-$$
+The mean income level is given by
+$$\mu = \frac{1}{n} \sum_{j=1}^{m} n_j y_j = \sum_{j=1}^{m} w_j y_j$$
+and the variance of the income level is given by
+$$\sigma^2 = \frac{1}{n} \sum_{j=1}^{m} n_j \left(y_j-\mu \right)^2 = \sum_{j=1}^{m} w_j \left(y_j-\mu \right)^2.$$
 
 The second measure of inequality is the coefficient of variation:
 $$CV=\sigma/\mu$$.
 
 ### Gini coefficient
 
-The third measure of inequality is the Gini coefficient: $$
-G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1}{2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} w_j w_k |y_j-y_k|.
-$$
+The third measure of inequality is the Gini coefficient:
+$$G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1}{2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} w_j w_k |y_j-y_k|.$$
 
 ### Theil’s first measure
 
-The third measure of inequality is Theil’s first measure: $$
-T = \sum_{j=1}^{m} \frac{n_j}{n}  \frac{y_j}{\mu} \ln \left( \frac{y_j}{\mu} \right).
-$$
+The third measure of inequality is Theil’s first measure:
+$$T = \sum_{j=1}^{m} \frac{n_j}{n}  \frac{y_j}{\mu} \ln \left( \frac{y_j}{\mu} \right).$$
 
 ### Using data on population and income shares
 
@@ -102,9 +99,8 @@ In a similar way, using $y_j=(s_j/w_j)\mu$, we see that the Gini
 coefficient is given by
 $$G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1}{2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} w_j w_k |(s_j/w_j)-(s_k/w_k)|$$
 
-In the same way, Theil’s first measure can re-written as: $$
-T = \sum_{j=1}^{m} \frac{n_j}{n}  \frac{y_j}{\mu} \ln \left( \frac{y_j}{\mu} \right) = \sum_{j=1}^{m} s_j \ln \left( \frac{y_j}{\mu} \right).
-$$
+In the same way, Theil’s first measure can re-written as:
+$$T = \sum_{j=1}^{m} \frac{n_j}{n}  \frac{y_j}{\mu} \ln \left( \frac{y_j}{\mu} \right) = \sum_{j=1}^{m} s_j \ln \left( \frac{y_j}{\mu} \right).$$
 
 ## The functions in the package
 
