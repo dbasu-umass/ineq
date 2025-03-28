@@ -7,9 +7,9 @@
 ineq1(y, w)
 }
 \arguments{
-\item{y}{A vector of groupwise mean income levels}
+\item{y}{A vector of groupwise mean income levels (in increasing order)}
 
-\item{w}{A vector of groupwise population shares}
+\item{w}{A corresponding vector of groupwise population shares}
 }
 \value{
 A list with the following elements:

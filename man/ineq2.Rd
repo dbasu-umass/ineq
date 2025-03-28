@@ -9,7 +9,7 @@ ineq2(w, s)
 \arguments{
 \item{w}{A vector of groupwise population shares}
 
-\item{s}{A vector of groupwise income shares}
+\item{s}{A corresponding vector of groupwise income shares (in increasing order)}
 }
 \value{
 A list with the following elements:

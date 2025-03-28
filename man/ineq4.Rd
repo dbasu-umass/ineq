@@ -7,9 +7,9 @@
 ineq4(y, n)
 }
 \arguments{
-\item{y}{A vector of group-level mean income levels}
+\item{y}{A vector of group-level mean income levels (in increasing order)}
 
-\item{n}{A vector of group-level population levels}
+\item{n}{A corresponding vector of group-level population levels}
 }
 \value{
 A list with the following elements:
