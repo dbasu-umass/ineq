@@ -91,7 +91,9 @@ $s_j=n_jy_j/y=n_jy_j/n\mu=w_jy_j/\mu$, we get $y_j=(s_j/w_j)\mu$.
 
 Using this, we see that the variance of the income distribution is given
 by
+
 $$\sigma^2 = \sum_{j=1}^{m} w_j \left(y_j-\mu \right)^2 = \sum_{j=1}^{m} \mu^2 w_j \left(\frac{s_j}{w_j}-1 \right)^2 = \mu^2 \sum_{j=1}^{m}  w_j \left(\frac{s_j}{w_j}-1 \right)^2.$$
+
 Hence, the coefficient is variation is given by
 $$CV=\frac{\sigma}{\mu}=\sum_{j=1}^{m}  w_j \left(\frac{s_j}{w_j}-1 \right)^2$$
 

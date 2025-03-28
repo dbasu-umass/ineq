@@ -65,7 +65,12 @@ The Lorenz curve requires data on cumulative population and income shares. Using
 
 The CV and Gini coefficient can also be expressed in terms of population and income shares. To see this, note that since $s_j=n_jy_j/y=n_jy_j/n\mu=w_jy_j/\mu$, we get $y_j=(s_j/w_j)\mu$. 
 
-Using this, we see that the variance of the income distribution is given by $$\sigma^2 = \sum_{j=1}^{m} w_j \left(y_j-\mu \right)^2 = \sum_{j=1}^{m} \mu^2 w_j \left(\frac{s_j}{w_j}-1 \right)^2 = \mu^2 \sum_{j=1}^{m}  w_j \left(\frac{s_j}{w_j}-1 \right)^2.$$ Hence, the coefficient is variation is given by $$CV=\frac{\sigma}{\mu}=\sum_{j=1}^{m}  w_j \left(\frac{s_j}{w_j}-1 \right)^2$$
+Using this, we see that the variance of the income distribution is given by
+
+$$\sigma^2 = \sum_{j=1}^{m} w_j \left(y_j-\mu \right)^2 = \sum_{j=1}^{m} \mu^2 w_j \left(\frac{s_j}{w_j}-1 \right)^2 = \mu^2 \sum_{j=1}^{m}  w_j \left(\frac{s_j}{w_j}-1 \right)^2.$$ 
+
+Hence, the coefficient is variation is given by
+$$CV=\frac{\sigma}{\mu}=\sum_{j=1}^{m}  w_j \left(\frac{s_j}{w_j}-1 \right)^2$$
 
 In a similar way, using $y_j=(s_j/w_j)\mu$, we see that the Gini coefficient is given by $$G = \frac{1}{2n^2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} n_j n_k |y_j-y_k| = \frac{1}{2 \mu} \sum_{j=1}^{m} \sum_{k=1}^{m} w_j w_k |(s_j/w_j)-(s_k/w_k)|$$
 
