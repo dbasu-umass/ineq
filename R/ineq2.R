@@ -27,8 +27,6 @@ ineq2 <- function(w,s){
 
   if(base::length(s)!=base::length(w)){
     stop("Length of s an w cannot differ")
-  } else if (base::is.unsorted(s)==TRUE) {
-    stop("s needs to be sorted in increasing order")
   } else{
 
     # --- Number of observations: Will use for loops
