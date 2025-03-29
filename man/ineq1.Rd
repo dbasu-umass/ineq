@@ -24,7 +24,9 @@ A list with the following elements:
 Inequality for groupwise popn share and income levels
 }
 \examples{
+# vector of group-level mean incomes
 y2011u <- c(700,909,1118,1363,1625,1888,2181,2548,3063,3893,5351,10282)
+# vector of group-level population shares
 w2011u <- c(0.05,0.05,rep(0.1,8),0.05,0.05)
 res_urb_11 <- ineq1(y=y2011u, w=w2011u)
 

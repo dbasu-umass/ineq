@@ -24,8 +24,10 @@ A list with the following elements:
 Inequality for group-level mean income and population levels
 }
 \examples{
-y <- c(100, 200, 300, 400)
-n <- c(50,25,75,25)
+# vector of group-level mean incomes
+y <- c(10, 20, 25, 55, 70, 90, 110, 115, 130)
+# vector of group-level populations
+n <- c(6, 7, 7, 14, 22, 20, 8, 4, 1)
 myres <- ineq4(y=y,n=n)
 
 }
