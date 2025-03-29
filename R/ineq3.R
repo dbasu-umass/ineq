@@ -13,6 +13,7 @@
 #' @export
 #'
 #' @examples
+#' # vector of individual-level income levels
 #' y <- c(100, 200, 300, 400)
 #' myres <- ineq3(y=y)
 #'

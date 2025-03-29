@@ -15,7 +15,9 @@
 #' @export
 #'
 #' @examples
+#' # vector of group-level mean incomes
 #' y2011u <- c(700,909,1118,1363,1625,1888,2181,2548,3063,3893,5351,10282)
+#' # vector of group-level population shares
 #' w2011u <- c(0.05,0.05,rep(0.1,8),0.05,0.05)
 #' res_urb_11 <- ineq1(y=y2011u, w=w2011u)
 #'
@@ -30,8 +32,11 @@ ineq1 <- function(y,w){
     stop("y needs to be sorted in increasing order")
   } else {
 
+    # --- mean income
+    y_mu <- sum(w*y)
+
     # --- income shares
-    s <- y/sum(y)
+    s <- (w*y)/y_mu
 
     # --- Compute all measures by using 'ineq2'
     myres <- ineq::ineq2(w=w,s=s)

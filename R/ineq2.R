@@ -14,7 +14,9 @@
 #' @export
 #'
 #' @examples
+#' # vector of group-level income shares
 #'s <- c(0.09, 0.15, 0.20, 0.25, 0.31)
+#'# vector of group-level population shares
 #'w <- rep(x=0.2, times=5)
 #'myres <- ineq2(w=w,s=s)
 #'
